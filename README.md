@@ -1,4 +1,3 @@
-```markdown
 # Frontend de la Prueba Técnica (Angular 16)
 
 Este repositorio contiene el código fuente del frontend de la aplicación desarrollada con Angular 16. La aplicación frontend se encarga de proporcionar una interfaz de usuario amigable para interactuar con la API desarrollada en el repositorio de la prueba técnica de Innovus.
