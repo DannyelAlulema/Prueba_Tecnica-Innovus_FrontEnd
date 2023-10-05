@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <h4 id="homeApiMessage">{{ message }}</h4>
+</div>
+<hr>
+
+<h2>Datos del Usuario</h2>
+<div class="mt-3">
+  <div class="row g-3">
+    <div class="col-sm-6">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="name">
+      <div class="invalid-feedback">
+        Nombre es requerido.
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <label for="username" class="form-label">Nombre de usuario</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="username">
+      <div class="invalid-feedback">
+        Nombre de usuario es requerido.
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <label for="name" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="password">
+    </div>
+
+    <div class="col-sm-6">
+      <label for="password-confirm" class="form-label">Confirmar contraseña</label>
+      <input type="password" class="form-control" id="password-confirm" [(ngModel)]="passwordConfirm">
+    </div>
+    <div class="row px-5 mt-4">
+      <button class="btn btn-primary btn-sm" (click)="saveProfile()">Guardar</button>
+    </div>
+  </div>
+</div>

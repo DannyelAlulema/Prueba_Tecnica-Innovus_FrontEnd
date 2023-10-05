@@ -1,0 +1,4 @@
+export const env = {
+  APP_ENV: 'local',
+  API_BASE_URL: 'http://localhost:8000'
+};

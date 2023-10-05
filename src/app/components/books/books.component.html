@@ -1,0 +1,88 @@
+<div *ngIf="isAdmin" class="my-3">
+  <button (click)="resetFields()" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"><i
+      class="bi bi-plus-lg"></i> Agregar</button>
+</div>
+<div class="table-responsive">
+  <table id="dataTable" class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Género</th>
+        <th scope="col">Editorial</th>
+        <th scope="col">Año de Publicación</th>
+        <th scope="col">Descripcion</th>
+        <th *ngIf="isAdmin" scope="col" colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <th>{{ book.title }}</th>
+        <td>{{ book.author }}</td>
+        <td>{{ book.genre }}</td>
+        <td>{{ book.publisher }}</td>
+        <td>{{ book.publication_year }}</td>
+        <td>{{ book.description }}</td>
+        <td *ngIf="isAdmin">
+          <button (click)="edit(book.id)" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"><i
+              class="bi bi-pencil-square"></i></button>
+        </td>
+        <td *ngIf="isAdmin">
+          <button (click)="delete(book.id)" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div  *ngIf="isAdmin" class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" data-backdrop="static">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="bookModalLabel">Libro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="title" class="form-label">Título</label>
+          <input [(ngModel)]="title" type="text" class="form-control" id="title" placeholder="Ingrese el título">
+        </div>
+        <div class="mb-3">
+          <label for="author_id" class="form-label">Autor</label>
+          <select [(ngModel)]="author_id" class="form-select" id="author_id">
+            <option *ngFor="let author of authors" value="{{ author.id }}">{{ author.name }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="genre" class="form-label">Género</label>
+          <input [(ngModel)]="genre" type="text" class="form-control" id="genre" placeholder="Ingrese el género">
+        </div>
+        <div class="mb-3">
+          <label for="publisher" class="form-label">Editorial</label>
+          <input [(ngModel)]="publisher" type="text" class="form-control" id="publisher" placeholder="Ingrese la editorial">
+        </div>
+        <div class="mb-3">
+          <label for="publication_year" class="form-label">Año de Publicación</label>
+          <input [(ngModel)]="publication_year" type="text" class="form-control" id="publication_year" placeholder="Ingrese el año de publicación">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descripción</label>
+          <textarea [(ngModel)]="description" class="form-control" id="description" rows="3" placeholder="Ingrese la descripción"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Precio</label>
+          <input [(ngModel)]="price" type="text" class="form-control" id="price" placeholder="Ingrese el precio">
+        </div>
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock</label>
+          <input [(ngModel)]="stock" type="text" class="form-control" id="stock" placeholder="Ingrese el stock">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="cancel()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="save()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

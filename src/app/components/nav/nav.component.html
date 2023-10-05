@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body sticky-top" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand me-5" id="nav-title" [routerLink]="['/inicio']">
+      Dannyel Alulema
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="isLogedIn" class="nav-item">
+          <a class="nav-link" id="homeLink" [routerLink]="['/inicio']" [routerLinkActive]="['active']">Inicio</a>
+        </li>
+        <li *ngIf="isLogedIn" class="nav-item">
+          <a class="nav-link" id="authorsLink" [routerLink]="['/autores']" [routerLinkActive]="['active']">Autores</a>
+        </li>
+        <li *ngIf="isLogedIn" class="nav-item">
+          <a class="nav-link" id="booksLink" [routerLink]="['/libros']" [routerLinkActive]="['active']">Libros</a>
+        </li>
+        <li *ngIf="logedAdmin" class="nav-item">
+          <a class="nav-link" id="usersLink" [routerLink]="['/usuarios']" [routerLinkActive]="['active']">Usuarios</a>
+        </li>
+      </ul>
+
+      <button *ngIf="isLogedIn" class="btn btn-danger btn-sm" (click)="logout()">Cerrar Sesion</button>
+      <a *ngIf="!isLogedIn" class="btn btn-success btn-sm" [routerLink]="['/login']">Iniciar Sesion</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-3 custom-container content">
+  <div class="d-flex justify-content-end">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li id="current-breadcrumb" class="breadcrumb-item active" aria-current="page"></li>
+      </ol>
+    </nav>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
